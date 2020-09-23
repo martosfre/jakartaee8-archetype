@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.matoosfe</groupId>
+  <artifactId>jakartaee8-archetype-archetype</artifactId>
+  <version>0.1.0</version>
+  <packaging>maven-archetype</packaging>
+
+  <name>jakartaee8-archetype-archetype</name>
+
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>3.2.0</version>
+      </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <description>JakartaEE 8 Archetype</description>
+
+  <url>http://www.marcotoscano.org/2020/09/jakarta-ee-8-archetype.html</url>
+
+  <developers>
+    <developer>
+      <name>Marco A. Toscano F</name>
+      <email>mtoscano@matoosfe.com</email>
+      <organization>Matoosfe</organization>
+      <organizationUrl>https://www.matoosfe.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+</project>

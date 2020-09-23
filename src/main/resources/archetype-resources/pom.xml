@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${groupId}</groupId>
+	<artifactId>${artifactId}</artifactId>
+	<version>${version}</version>
+
+	<packaging>pom</packaging>
+	<name>${artifactId}</name>
+	<description>JakartaEE 8 Archetype</description>
+	<url>http://www.marcotoscano.org/2020/09/jakarta-ee-8-archetype.html</url>
+	<organization>
+		<name>Matoosfe</name>
+		<url>http://www.matoosfe.com</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Marco A. Toscano F</name>
+			<email>mtoscano@matoosfe.com</email>
+			<organization>Matoosfe</organization>
+			<organizationUrl>https://www.matoosfe.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<properties>
+		<!-- Explicitly declaring the source encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<!-- Jakarta and specifications Version -->
+		<version.jakarta>8</version.jakarta>
+		<version.jakarta.platform>8.0.0</version.jakarta.platform>
+		<version.ejb>3.2</version.ejb>
+		<version.hibernate.validator>6.0.17.Final</version.hibernate.validator>
+		
+		<!-- Test -->
+		<version.junit>4.12</version.junit>
+		
+		<!-- Payara Version -->
+		<version.payara>5.0</version.payara>
+		
+		<!-- other plugin versions -->
+		<version.compiler.plugin>3.8.1</version.compiler.plugin>
+		<version.wildfly.plugin>2.0.2.Final</version.wildfly.plugin>
+		<version.cargo.plugin>1.7.16</version.cargo.plugin>
+		<version.ear.plugin>3.0.2</version.ear.plugin>
+		<version.ejb.plugin>3.0.1</version.ejb.plugin>
+		<version.war.plugin>3.2.3</version.war.plugin>
+
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<!-- Define the version of the EJB jar so that we don't need to repeat 
+				ourselves in every module -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${rootArtifactId}-ejb</artifactId>
+				<version>${version}</version>
+				<type>ejb</type>
+			</dependency>
+
+			<!-- Define the version of the WAR so that we don't need to repeat ourselves 
+				in every module -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${rootArtifactId}-web</artifactId>
+				<version>${version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<!--Configuration of the maven-compiler-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${version.compiler.plugin}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.source}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

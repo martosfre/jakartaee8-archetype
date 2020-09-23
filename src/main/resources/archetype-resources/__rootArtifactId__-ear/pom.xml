@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}</artifactId>
+		<version>${version}</version>
+	</parent>
+	<artifactId>${artifactId}</artifactId>
+	<packaging>ear</packaging>
+	<name>jakartaee8-archetype - ear</name>
+	<description>This is the EAR POM file</description>
+
+	<dependencies>
+		<!-- Depend on the EJB module and WAR so that we can package them -->
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${rootArtifactId}-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>${rootArtifactId}-web</artifactId>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.parent.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>${version.ear.plugin}</version>
+				<configuration>
+					<!-- Tell Maven we are using Jakarta EE -->
+					<version>${version.jakarta}</version>
+					<!--Jakarta EE ear libraries are in easy way to package any libraries 
+						needed in the ear, and automatically have any modules (EJB-JARs and WARs) 
+						use them -->
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<ejbModule>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${rootArtifactId}-ejb</artifactId>
+						</ejbModule>
+						<webModule>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${rootArtifactId}-web</artifactId>
+							<contextRoot>/jakartaee8-web</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+			<!-- Plugin to deploy the EAR projec to Wildly -->
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>${version.wildfly.plugin}</version>
+				<configuration>
+					<skip>false</skip>
+					<hostname>${wildfly-hostname}</hostname>
+					<port>${wildfly-port}</port>
+					<username>${wildfly-username}</username>
+					<password>${wildfly-password}</password>
+				</configuration>
+			</plugin>
+			<!-- Plugin to deploy the EAR project to Payara -->
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>${version.cargo.plugin}</version>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<configuration>
+						<container>
+							<containerId>payara</containerId>
+							<type>installed</type>
+							<home>${payara.home}</home>
+						</container>
+						<configuration>
+							<type>existing</type>
+							<home>${payara.domainDir}</home>
+							<properties>
+								<cargo.remote.username>${payara.username}</cargo.remote.username>
+								<cargo.remote.password>${payara.password}</cargo.remote.password>
+								<cargo.glassfish.admin.port>${payara.adminPort}</cargo.glassfish.admin.port>
+								<cargo.hostname>${payara.hostname}</cargo.hostname>
+								<cargo.glassfish.domain.name>${payara.domainName}</cargo.glassfish.domain.name>
+							</properties>
+						</configuration>
+						<deployables>
+							<deployable>
+								<groupId>${project.groupId}</groupId>
+								<artifactId>${project.artifactId}</artifactId>
+								<type>ear</type>
+							</deployable>
+						</deployables>
+					</configuration>
+					<!-- provides JSR88 client API to deploy on Payara -->
+					<dependencies>
+						<dependency>
+							<groupId>org.glassfish.main.deployment</groupId>
+							<artifactId>deployment-client</artifactId>
+							<version>${version.payara}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

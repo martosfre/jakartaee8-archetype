@@ -1,0 +1,10 @@
+# Maven 
+target/
+
+# Eclipse
+.settings/
+.classpath
+.project
+
+# OS
+.DS_Store
