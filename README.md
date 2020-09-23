@@ -17,7 +17,7 @@
 >2. Using the command (change the GROUP_ID, PROJECT_NAME and VERSION variables until to execute it): mvn archetype:generate -o -DarchetypeGroupId=com.matoosfe -DarchetypeArtifactId=javaee8-archetype -DarchetypeVersion=0.1.0 -Darchetype.interactive=false --batch-mode -DgroupId=GROUP_ID -DartifactId=PROJECT_NAME -Dversion=VERSION
 
 ## Version History
->* 0.1.0
+>* 1.0
  * Github First Release
  
 ## Author
