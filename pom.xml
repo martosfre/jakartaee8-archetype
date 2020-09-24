@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.matoosfe</groupId>
-  <artifactId>jakartaee8-archetype-archetype</artifactId>
-  <version>0.1.0</version>
+  <artifactId>jakartaee8-archetype</artifactId>
+  <version>1.0</version>
   <packaging>maven-archetype</packaging>
 
-  <name>jakartaee8-archetype-archetype</name>
+  <name>jakartaee8-archetype</name>
 
   <build>
     <extensions>
