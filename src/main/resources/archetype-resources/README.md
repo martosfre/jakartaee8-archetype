@@ -10,7 +10,7 @@
 ## Create Project using archetype
 >To create a project using the jakartaee8 archetype, you can do the following:
 >1. Install the jakartaee8 archetype on your local repository.
->2. Create a project using eclipse or other IDE or once uncompresed the archetype, inside the main folder execute the following command: mvn archetype:generate -DarchetypeGroupId=com.matoosfe -DarchetypeArtifactId=jakartaee8-archetype -DarchetypeVersion=0.1.0 -Darchetype.interactive=false --batch-mode -DgroupId=GROUP_ID -DartifactId=PROJECT_NAME -Dversion=VERSION (don't forget to change the GROUP_ID, PROJECT_NAME and VERSION variables until to execute it)
+>2. Create a project using eclipse or other IDE or once uncompresed the archetype, inside the main folder execute the following command: mvn archetype:generate -DarchetypeGroupId=com.matoosfe -DarchetypeArtifactId=jakartaee8-archetype -DarchetypeVersion=1.0 -Darchetype.interactive=false --batch-mode -DgroupId=GROUP_ID -DartifactId=PROJECT_NAME -Dversion=VERSION (don't forget to change the GROUP_ID, PROJECT_NAME and VERSION variables until to execute it)
 
 >For more information, you can review this link: http://www.marcotoscano.org/2020/09/jakarta-ee-8-archetype.html
 
